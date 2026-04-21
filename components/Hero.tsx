@@ -1,178 +1,168 @@
-import { ArrowRight, Star, Shield, MapPin, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Shield, MapPin, CheckCircle2, Star, Play } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="hero-gradient min-h-screen pt-24 pb-16 flex flex-col justify-center relative overflow-hidden">
-      {/* Background orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="min-h-screen pt-16 flex flex-col relative overflow-hidden bg-[#F8F4EE]">
 
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — Copy */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 tag-badge px-4 py-1.5 rounded-full text-sm font-medium mb-8">
-              <Star size={13} fill="currentColor" />
-              #1 Marketplace Coach × Client
+      {/* ── Full-width Bali image top half ── */}
+      <div className="relative w-full" style={{ height: "62vh", minHeight: 400 }}>
+        <Image
+          src="/images/bali-coaching.jpg"
+          alt="Coaching Bali — infinite pool et jungle"
+          fill
+          priority
+          className="object-cover object-center"
+          style={{ objectPosition: "center 30%" }}
+        />
+        {/* Dark gradient overlay bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-[#F8F4EE]" />
+
+        {/* "TRAIN. RECOVER. GROW." words overlay */}
+        <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-12 px-6">
+          {["TRAIN.", "RECOVER.", "GROW."].map(w => (
+            <span key={w} className="text-white font-black text-2xl md:text-4xl tracking-widest drop-shadow-lg opacity-90">
+              {w}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Copy section ── */}
+      <div className="max-w-7xl mx-auto px-6 w-full py-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+          {/* Left */}
+          <div>
+            <div className="inline-flex items-center gap-2 tag-badge px-4 py-1.5 rounded-full mb-7">
+              <span className="w-1.5 h-1.5 rounded-full bg-leaf-500 animate-pulse inline-block" />
+              6 000+ coachs disponibles
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6">
+            <h1 className="text-5xl md:text-6xl font-black leading-[1.06] tracking-tight text-stone-900 mb-6">
               Trouvez le{" "}
-              <span className="gradient-text">coach parfait</span>{" "}
-              en{" "}
-              <span className="relative inline-block">
-                60 secondes
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  viewBox="0 0 200 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 6 Q50 2 100 5 Q150 8 198 3"
-                    stroke="#FF6B35"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
+              <span className="gradient-text">coach parfait</span>
+              <br />
+              en <span className="gradient-text-warm">60 secondes</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
-              L&apos;algorithme de matching le plus précis du marché. Objectifs, budget,
-              localisation, type de coaching — votre coach idéal vous attend.
+            <p className="text-lg text-stone-500 leading-relaxed max-w-lg mb-10">
+              La marketplace de coaching inspirée par l&apos;excellence Balinaise —
+              matching IA, coachs certifiés, espaces de vie et d&apos;entraînement soigneusement sélectionnés.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
-              <a
-                href="#pricing"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white"
-              >
+            <div className="flex flex-col sm:flex-row gap-3 mb-10">
+              <a href="#pricing" className="btn-primary inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold">
                 Trouver mon coach
                 <ArrowRight size={18} />
               </a>
-              <a
-                href="#coaches"
-                className="card-glass inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-semibold text-white/80 hover:text-white"
-              >
-                Je suis coach
+              <a href="#how-it-works" className="btn-outline inline-flex items-center justify-center gap-3 px-7 py-4 text-base font-semibold">
+                <span className="w-8 h-8 rounded-full bg-leaf-100 flex items-center justify-center">
+                  <Play size={11} className="text-leaf-600 ml-0.5" fill="currentColor" />
+                </span>
+                Voir la démo
               </a>
             </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start text-sm text-white/50">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-green-400" />
-                Coachs vérifiés BPJEPS
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Shield size={14} className="text-blue-400" />
-                Paiement 100% sécurisé
-              </div>
-              <div className="flex items-center gap-1.5">
-                <MapPin size={14} className="text-purple-400" />
-                Géolocalisé
-              </div>
+            <div className="flex flex-wrap gap-5">
+              {[
+                { icon: CheckCircle2, color: "text-leaf-500", label: "Coachs BPJEPS vérifiés" },
+                { icon: Shield, color: "text-stone-400", label: "Paiement sécurisé" },
+                { icon: MapPin, color: "text-terra", label: "Géolocalisé" },
+              ].map(({ icon: Icon, color, label }) => (
+                <div key={label} className="flex items-center gap-1.5 text-sm text-stone-500">
+                  <Icon size={14} className={color} />
+                  {label}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right — UI mockup */}
+          {/* Right — Coach card mockup */}
           <div className="relative flex justify-center lg:justify-end">
-            {/* Main card */}
-            <div className="float-animation relative z-10">
-              <div className="card-glass rounded-3xl p-6 w-72 glow-purple">
+            <div className="float-animation w-72 relative z-10">
+
+              {/* Main coach card */}
+              <div className="card p-6 shadow-xl shadow-stone-200">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-xl">
-                    💪
-                  </div>
-                  <div>
-                    <div className="font-bold text-white">Sarah L.</div>
-                    <div className="text-xs text-white/50">Coach Fitness · Paris 8e</div>
-                  </div>
-                  <div className="ml-auto">
-                    <div className="w-8 h-8 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-green-400" />
+                  <div className="relative">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-leaf-400 to-leaf-700 flex items-center justify-center text-2xl shadow-md">
+                      🧘
                     </div>
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-bold text-stone-900">Sarah Laurent</div>
+                    <div className="text-xs text-stone-400">Coach Yoga & Mindfulness</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-stone-900">80€</div>
+                    <div className="text-xs text-stone-400">/séance</div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1 mb-3">
-                  {[1,2,3,4,5].map((s) => (
-                    <Star key={s} size={12} className="text-yellow-400" fill="#FBBF24" />
-                  ))}
-                  <span className="text-xs text-white/50 ml-1">4.9 (127 avis)</span>
+                <div className="flex items-center gap-1 mb-4">
+                  {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="#C4956A" className="text-terra" />)}
+                  <span className="text-xs text-stone-400 ml-1.5">4.9 · 127 avis</span>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {["BPJEPS ✓", "Perte de poids", "Musculation"].map((t) => (
+                  {["BPJEPS ✓", "Outdoor", "Domicile"].map(t => (
                     <span key={t} className="tag-badge text-xs px-2.5 py-1 rounded-full">{t}</span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                  <div>
-                    <div className="text-white font-bold text-lg">70€</div>
-                    <div className="text-xs text-white/40">/ séance</div>
+                <div className="card-sand p-3 mb-4 flex items-center justify-between rounded-xl">
+                  <span className="text-xs text-stone-500">Prochain créneau</span>
+                  <span className="text-xs font-semibold text-leaf-600">Demain 8h00 ✓</span>
+                </div>
+
+                <button className="w-full btn-primary py-3 text-sm font-bold">
+                  Réserver une séance
+                </button>
+              </div>
+
+              {/* Match score floating */}
+              <div className="float-animation-delay absolute -top-5 -left-10 z-20">
+                <div className="card px-4 py-3 shadow-lg flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-terra flex items-center justify-center shadow-md">
+                    <span className="text-sm">🎯</span>
                   </div>
-                  <button className="btn-primary px-4 py-2 rounded-xl text-sm font-semibold text-white">
-                    Réserver
-                  </button>
+                  <div>
+                    <div className="text-[10px] text-stone-400 uppercase tracking-wider">Score matching</div>
+                    <div className="font-bold text-stone-900 text-sm">98% compatible</div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Match score card */}
-            <div className="float-animation-delay absolute -top-4 -left-8 lg:-left-16 z-20">
-              <div className="card-glass rounded-2xl px-4 py-3 flex items-center gap-3 glow-orange">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                  <span className="text-sm">🎯</span>
+              {/* Confirmed booking */}
+              <div className="float-animation absolute -bottom-4 -left-6 z-20">
+                <div className="card px-4 py-3 shadow-lg flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-leaf-500 flex items-center justify-center">
+                    <CheckCircle2 size={16} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-stone-400 uppercase tracking-wider">Réservation</div>
+                    <div className="font-bold text-stone-900 text-sm">Confirmée ✓</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs text-white/50">Score matching</div>
-                  <div className="font-bold text-white">98% compatible</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Booking confirmation */}
-            <div className="float-animation absolute bottom-4 -right-4 lg:-right-8 z-20">
-              <div className="card-glass rounded-2xl px-4 py-3 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
-                  <CheckCircle2 size={16} className="text-white" />
-                </div>
-                <div>
-                  <div className="text-xs text-white/50">Réservation</div>
-                  <div className="font-bold text-white text-sm">Confirmée ✓</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Stat card */}
-            <div className="absolute top-1/2 -translate-y-1/2 -left-12 lg:-left-20 z-20 float-animation">
-              <div className="card-glass rounded-2xl px-4 py-3 text-center">
-                <div className="text-2xl font-black gradient-text">50K+</div>
-                <div className="text-xs text-white/40">clients actifs</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Stats bar */}
-      <div className="max-w-7xl mx-auto px-6 w-full mt-20">
-        <div className="section-divider mb-12" />
+        {/* Stats */}
+        <div className="section-divider mt-20 mb-12" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { value: "6 000+", label: "Coachs certifiés" },
             { value: "50 000+", label: "Clients actifs" },
             { value: "98%", label: "Taux satisfaction" },
             { value: "< 60s", label: "Temps de matching" },
-          ].map((s) => (
+          ].map(s => (
             <div key={s.label}>
               <div className="text-3xl md:text-4xl font-black gradient-text mb-1">{s.value}</div>
-              <div className="text-sm text-white/40">{s.label}</div>
+              <div className="text-sm text-stone-400">{s.label}</div>
             </div>
           ))}
         </div>
